@@ -268,7 +268,7 @@ class MOELayer(torch.nn.Module):
 
         def routing():
             logits = gctx(x)
-
+            print("======={}======".format(gctx.gate_noise))
             if self.training and gctx.gate_noise > 0:
                 logits_w_noise = logits + gctx.gate_noise * torch.randn_like(logits) / self.num_global_experts
             else:
